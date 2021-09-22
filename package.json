@@ -137,9 +137,5 @@
 	"engines": {
 		"vscode": "^1.60.0"
 	},
-	"__metadata": {
-		"id": "de91e0f2-8e2f-46f4-9a9f-d328ca5a2f4d",
-		"publisherDisplayName": "1000ch",
-		"publisherId": "8ddc9f6b-42cf-4d1f-b106-feb27b07d80c"
-	}
+	"icon": "img/icon.png"
 }
