@@ -10,10 +10,12 @@ function getConfig(): CleanCSS.OptionsPromise {
   const config = workspace.getConfiguration('clean-css');
   const compatibility = config.get<CleanCSS.CompatibilityOptions>('compatibility');
   const level = config.get<CleanCSS.OptimizationsOptions>('level');
+  const format = config.get<CleanCSS.FormatOptions>('format');
   const inline = config.get<string>('inline');
   const cleanCssConfig: CleanCSS.OptionsPromise = {
     compatibility,
     level,
+    format,
     inline: [inline],
     returnPromise: true,
   };
@@ -21,38 +23,16 @@ function getConfig(): CleanCSS.OptionsPromise {
   return cleanCssConfig;
 }
 
-function getFormatConfig(): CleanCSS.OptionsPromise {
-  const cleanCssConfig = getConfig();
-  const config = workspace.getConfiguration('clean-css');
-  cleanCssConfig.format = config.get<CleanCSS.FormatOptions>('format');
-
-  return cleanCssConfig;
-}
-
-async function formatCSS(text: string): Promise<string> {
-  const config = getFormatConfig();
-  const cleanCSS = new CleanCSS(config);
-  const {styles} = await cleanCSS.minify(text);
-
-  return styles;
-}
-
-async function minifyCSS(text: string): Promise<string> {
-  const config = getConfig();
-  const cleanCSS = new CleanCSS(config);
-  const {styles} = await cleanCSS.minify(text);
-
-  return styles;
-}
-
 async function formatTextDocument(textDocument: TextDocument) {
   if (!isCSS(textDocument)) {
     return;
   }
 
-  const text = await formatCSS(textDocument.getText());
+  const config = getConfig();
+  const cleanCSS = new CleanCSS(config);
+  const {styles} = await cleanCSS.minify(textDocument.getText());
   const textEditor = await window.showTextDocument(textDocument);
-  await setText(text, textEditor);
+  await setText(styles, textEditor);
 }
 
 async function minifyTextDocument(textDocument: TextDocument) {
@@ -60,9 +40,12 @@ async function minifyTextDocument(textDocument: TextDocument) {
     return;
   }
 
-  const text = await minifyCSS(textDocument.getText());
+  const config = getConfig();
+  delete config.format;
+  const cleanCSS = new CleanCSS(config);
+  const {styles} = await cleanCSS.minify(textDocument.getText());
   const textEditor = await window.showTextDocument(textDocument);
-  await setText(text, textEditor);
+  await setText(styles, textEditor);
 }
 
 async function format() {
