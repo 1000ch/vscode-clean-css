@@ -20,10 +20,10 @@ $ ln -s ~/workspace/github.com/1000ch/vscode-clean-css  ~/.vscode/extensions/100
 
 Open the Command Palette (<kbd>Cmd</kbd> <kbd>Shift</kbd> <kbd>P</kbd>) and search following commands.
 
-- **Minify current CSS file**: to minify current CSS file
-- **Minify CSS files in workspace**: to minify all CSS files in workspace
-- **Format current CSS file**: to format current CSS file
-- **Format CSS files in workspace**: to format all CSS files in workspace
+- **clean-css: Minify current CSS file**: to minify current CSS file
+- **clean-css: Minify CSS files in workspace**: to minify all CSS files in workspace
+- **clean-css: Format current CSS file**: to format current CSS file
+- **clean-css: Format CSS files in workspace**: to format all CSS files in workspace
 
 You can also execute these commands from context menu of [Explorer](https://code.visualstudio.com/docs/getstarted/userinterface#_explorer) or Editor.
 

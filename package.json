@@ -28,19 +28,19 @@
 		"commands": [
 			{
 				"command": "clean-css.minify",
-				"title": "Minify current CSS file"
+				"title": "clean-css: Minify current CSS file"
 			},
 			{
 				"command": "clean-css.minify-all",
-				"title": "Minify CSS files in workspace"
+				"title": "clean-css: Minify CSS files in workspace"
 			},
 			{
 				"command": "clean-css.format",
-				"title": "Format current CSS file"
+				"title": "clean-css: Format current CSS file"
 			},
 			{
 				"command": "clean-css.format-all",
-				"title": "Format CSS files in workspace"
+				"title": "clean-css: Format CSS files in workspace"
 			}
 		],
 		"configuration": {
