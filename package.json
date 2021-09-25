@@ -1,141 +1,121 @@
 {
-	"name": "clean-css",
-	"displayName": "clean-css",
-	"version": "0.2.1",
-	"private": true,
-	"description": "Fully featured clean-css plugin for Visual Studio Code",
-	"categories": [
-		"Formatters"
-	],
-	"homepage": "https://github.com/1000ch/vscode-clean-css#readme",
-	"bugs": "https://github.com/1000ch/vscode-clean-css/issues",
-	"repository": "https://github.com/1000ch/vscode-clean-css",
-	"license": "MIT",
-	"qna": "https://stackoverflow.com/questions/tagged/vscode+clean+css",
-	"author": {
-		"name": "Shogo Sensui",
-		"email": "shogosensui@gmail.com",
-		"web": "https://github.com/1000ch"
-	},
-	"publisher": "1000ch",
-	"main": "out/extension.js",
-	"scripts": {
-		"vscode:prepublish": "npm run build",
-		"build": "tsc",
-		"test": "xo"
-	},
-	"contributes": {
-		"commands": [
-			{
-				"command": "clean-css.minify",
-				"title": "clean-css: Minify current CSS file"
-			},
-			{
-				"command": "clean-css.minify-all",
-				"title": "clean-css: Minify CSS files in workspace"
-			},
-			{
-				"command": "clean-css.format",
-				"title": "clean-css: Format current CSS file"
-			},
-			{
-				"command": "clean-css.format-all",
-				"title": "clean-css: Format CSS files in workspace"
-			}
-		],
-		"configuration": {
-			"title": "clean-css",
-			"properties": {
-				"clean-css.compatibility": {
-					"type": "string",
-					"default": "*",
-					"enum": [
-						"*",
-						"ie11",
-						"ie10",
-						"ie9",
-						"ie8",
-						"ie7"
-					],
-					"description": "compatibility mode shortcuts"
-				},
-				"clean-css.format": {
-					"type": "string",
-					"default": "beautify",
-					"enum": [
-						"beautify",
-						"keep-breaks"
-					],
-					"description": "format option to apply"
-				},
-				"clean-css.level": {
-					"type": "number",
-					"default": 1,
-					"enum": [
-						0,
-						1,
-						2
-					],
-					"description": "optimization level"
-				},
-				"clean-css.inline": {
-					"type": "string",
-					"default": "local",
-					"enum": [
-						"local",
-						"none",
-						"all"
-					],
-					"description": "whitelists which @import rules will be processed"
-				}
-			}
-		},
-		"menus": {
-			"explorer/context": [
-				{
-					"command": "clean-css.minify-all",
-					"group": "1_modification"
-				},
-				{
-					"command": "clean-css.format-all",
-					"group": "1_modification"
-				}
-			],
-			"editor/context": [
-				{
-					"when": "resourceLangId == css || editorLangId == css",
-					"command": "clean-css.minify",
-					"group": "1_modification"
-				},
-				{
-					"when": "resourceLangId == css || editorLangId == css",
-					"command": "clean-css.format",
-					"group": "1_modification"
-				}
-			]
-		}
-	},
-	"activationEvents": [
-		"onCommand:clean-css.minify",
-		"onCommand:clean-css.minify-all",
-		"onCommand:clean-css.format",
-		"onCommand:clean-css.format-all"
-	],
-	"xo": {
-		"space": 2
-	},
-	"dependencies": {
-		"clean-css": "^5.1.5",
-		"vscode-set-text": "^1.0.0"
-	},
-	"devDependencies": {
-		"@types/clean-css": "^4.2.5",
-		"@types/vscode": "^1.60.0",
-		"typescript": "^4.4.3",
-		"xo": "^0.44.0"
-	},
-	"engines": {
-		"vscode": "^1.60.0"
-	},
-	"icon": "img/icon.png"
+  "name": "clean-css",
+  "displayName": "clean-css",
+  "version": "0.2.1",
+  "private": true,
+  "description": "Fully featured clean-css plugin for Visual Studio Code",
+  "categories": [
+    "Formatters"
+  ],
+  "homepage": "https://github.com/1000ch/vscode-clean-css#readme",
+  "bugs": "https://github.com/1000ch/vscode-clean-css/issues",
+  "repository": "https://github.com/1000ch/vscode-clean-css",
+  "license": "MIT",
+  "qna": "https://stackoverflow.com/questions/tagged/vscode+clean+css",
+  "author": {
+    "name": "Shogo Sensui",
+    "email": "shogosensui@gmail.com",
+    "web": "https://github.com/1000ch"
+  },
+  "publisher": "1000ch",
+  "main": "out/extension.js",
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "tsc",
+    "test": "xo"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "clean-css.minify",
+        "title": "clean-css: Minify current CSS file"
+      },
+      {
+        "command": "clean-css.format",
+        "title": "clean-css: Format current CSS file"
+      }
+    ],
+    "configuration": {
+      "title": "clean-css",
+      "properties": {
+        "clean-css.compatibility": {
+          "type": "string",
+          "default": "*",
+          "enum": [
+            "*",
+            "ie11",
+            "ie10",
+            "ie9",
+            "ie8",
+            "ie7"
+          ],
+          "description": "compatibility mode shortcuts"
+        },
+        "clean-css.format": {
+          "type": "string",
+          "default": "beautify",
+          "enum": [
+            "beautify",
+            "keep-breaks"
+          ],
+          "description": "format option to apply"
+        },
+        "clean-css.level": {
+          "type": "number",
+          "default": 1,
+          "enum": [
+            0,
+            1,
+            2
+          ],
+          "description": "optimization level"
+        },
+        "clean-css.inline": {
+          "type": "string",
+          "default": "local",
+          "enum": [
+            "local",
+            "none",
+            "all"
+          ],
+          "description": "whitelists which @import rules will be processed"
+        }
+      }
+    },
+    "menus": {
+      "editor/context": [
+        {
+          "when": "resourceLangId == css || editorLangId == css",
+          "command": "clean-css.minify",
+          "group": "1_modification"
+        },
+        {
+          "when": "resourceLangId == css || editorLangId == css",
+          "command": "clean-css.format",
+          "group": "1_modification"
+        }
+      ]
+    }
+  },
+  "activationEvents": [
+    "onCommand:clean-css.minify",
+    "onCommand:clean-css.format"
+  ],
+  "xo": {
+    "space": 2
+  },
+  "dependencies": {
+    "clean-css": "^5.1.5",
+    "vscode-set-text": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/clean-css": "^4.2.5",
+    "@types/vscode": "^1.60.0",
+    "typescript": "^4.4.3",
+    "xo": "^0.44.0"
+  },
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "icon": "img/icon.png"
 }

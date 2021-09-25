@@ -57,13 +57,6 @@ async function format() {
   await window.showInformationMessage('Formatted current CSS file');
 }
 
-async function formatAll() {
-  const textDocuments = workspace.textDocuments.filter(textDocument => isCSS(textDocument));
-
-  await Promise.all(textDocuments.map(async textDocument => formatTextDocument(textDocument)));
-  await window.showInformationMessage('Formatted all CSS files');
-}
-
 async function minify() {
   if (!window.activeTextEditor) {
     return;
@@ -73,19 +66,10 @@ async function minify() {
   await window.showInformationMessage('Minified current CSS file');
 }
 
-async function minifyAll() {
-  const textDocuments = workspace.textDocuments.filter(textDocument => isCSS(textDocument));
-
-  await Promise.all(textDocuments.map(async textDocument => minifyTextDocument(textDocument)));
-  await window.showInformationMessage('Minified all CSS files');
-}
-
 export function activate(context: ExtensionContext) {
   context.subscriptions.push(
     commands.registerCommand('clean-css.format', format),
-    commands.registerCommand('clean-css.format-all', formatAll),
     commands.registerCommand('clean-css.minify', minify),
-    commands.registerCommand('clean-css.minify-all', minifyAll),
   );
 }
 
