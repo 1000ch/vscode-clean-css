@@ -1,4 +1,5 @@
-import {ExtensionContext, TextDocument, workspace, window, commands} from 'vscode';
+import {workspace, window, commands} from 'vscode';
+import type {ExtensionContext, TextDocument, TextEditor} from 'vscode';
 import setText from 'vscode-set-text';
 import CleanCSS from 'clean-css';
 
@@ -23,28 +24,28 @@ function getConfig(): CleanCSS.OptionsPromise {
   return cleanCssConfig;
 }
 
-async function formatTextDocument(textDocument: TextDocument) {
-  if (!isCSS(textDocument)) {
+async function formatTextDocument(textEditor: TextEditor) {
+  if (!isCSS(textEditor.document)) {
     return;
   }
 
   const config = getConfig();
   const cleanCSS = new CleanCSS(config);
-  const {styles} = await cleanCSS.minify(textDocument.getText());
-  const textEditor = await window.showTextDocument(textDocument);
+  const text = textEditor.document.getText();
+  const {styles} = await cleanCSS.minify(text);
   await setText(styles, textEditor);
 }
 
-async function minifyTextDocument(textDocument: TextDocument) {
-  if (!isCSS(textDocument)) {
+async function minifyTextDocument(textEditor: TextEditor) {
+  if (!isCSS(textEditor.document)) {
     return;
   }
 
   const config = getConfig();
   delete config.format;
   const cleanCSS = new CleanCSS(config);
-  const {styles} = await cleanCSS.minify(textDocument.getText());
-  const textEditor = await window.showTextDocument(textDocument);
+  const text = textEditor.document.getText();
+  const {styles} = await cleanCSS.minify(text);
   await setText(styles, textEditor);
 }
 
@@ -53,8 +54,16 @@ async function format() {
     return;
   }
 
-  await formatTextDocument(window.activeTextEditor.document);
-  await window.showInformationMessage('Formatted current CSS file');
+  try {
+    await formatTextDocument(window.activeTextEditor);
+    await window.showInformationMessage('Formatted current CSS file');
+  } catch (error: unknown) {
+    console.error(error);
+
+    if (error instanceof Error) {
+      await window.showErrorMessage(error.message);
+    }
+  }
 }
 
 async function minify() {
@@ -62,8 +71,16 @@ async function minify() {
     return;
   }
 
-  await minifyTextDocument(window.activeTextEditor.document);
-  await window.showInformationMessage('Minified current CSS file');
+  try {
+    await minifyTextDocument(window.activeTextEditor);
+    await window.showInformationMessage('Minified current CSS file');
+  } catch (error: unknown) {
+    console.error(error);
+
+    if (error instanceof Error) {
+      await window.showErrorMessage(error.message);
+    }
+  }
 }
 
 export function activate(context: ExtensionContext) {
