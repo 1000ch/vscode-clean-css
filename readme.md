@@ -25,6 +25,8 @@ Open the Command Palette (<kbd>Cmd</kbd> <kbd>Shift</kbd> <kbd>P</kbd>) and sear
 
 You can also execute these commands from context menu of [Explorer](https://code.visualstudio.com/docs/getstarted/userinterface#_explorer) or Editor.
 
+![You can use commands from the context menu of editor view](./screenshot-1.png)
+
 ## Config
 
 You can configure [css-clean options](https://github.com/clean-css/clean-css#constructor-options) via [Configure Extension Settings](https://code.visualstudio.com/docs/editor/extension-gallery#_configuring-extensions).
