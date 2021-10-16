@@ -1,8 +1,4 @@
-# vscode-clean-css
-
-![GitHub Actions Status](https://github.com/1000ch/vscode-clean-css/workflows/test/badge.svg)
-[![Dependency Status](https://david-dm.org/1000ch/vscode-clean-css.svg)](https://david-dm.org/1000ch/vscode-clean-css)
-[![devDependency Status](https://david-dm.org/1000ch/vscode-clean-css/dev-status.svg)](https://david-dm.org/1000ch/vscode-clean-css?type=dev)
+# vscode-clean-css ![GitHub Actions Status](https://github.com/1000ch/vscode-clean-css/workflows/test/badge.svg)
 
 Fully featured [clean-css](http://github.com/clean-css/clean-css) plugin for [Visual Studio Code](https://github.com/microsoft/vscode).
 
