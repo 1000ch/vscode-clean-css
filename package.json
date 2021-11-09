@@ -105,7 +105,7 @@
     "space": 2
   },
   "dependencies": {
-    "clean-css": "^5.1.5",
+    "clean-css": "^5.2.2",
     "vscode-set-text": "^1.0.0"
   },
   "devDependencies": {
