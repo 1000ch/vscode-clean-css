@@ -1,19 +1,19 @@
 import {workspace, window, commands} from 'vscode';
 import type {ExtensionContext, TextDocument, TextEditor} from 'vscode';
 import setText from 'vscode-set-text';
-import CleanCSS from 'clean-css';
+import CleanCss from 'clean-css';
 
-function isCSS({languageId}: TextDocument): boolean {
+function isCss({languageId}: TextDocument): boolean {
   return languageId === 'css';
 }
 
-function getConfig(): CleanCSS.OptionsPromise {
+function getConfig(): CleanCss.OptionsPromise {
   const config = workspace.getConfiguration('clean-css');
-  const compatibility = config.get<CleanCSS.CompatibilityOptions>('compatibility');
-  const level = config.get<CleanCSS.OptimizationsOptions>('level');
-  const format = config.get<CleanCSS.FormatOptions>('format');
+  const compatibility = config.get<CleanCss.CompatibilityOptions>('compatibility');
+  const level = config.get<CleanCss.OptimizationsOptions>('level');
+  const format = config.get<CleanCss.FormatOptions>('format');
   const inline = config.get<string>('inline');
-  const cleanCssConfig: CleanCSS.OptionsPromise = {
+  const cleanCssConfig: CleanCss.OptionsPromise = {
     compatibility,
     level,
     format,
@@ -25,27 +25,27 @@ function getConfig(): CleanCSS.OptionsPromise {
 }
 
 async function formatTextDocument(textEditor: TextEditor) {
-  if (!isCSS(textEditor.document)) {
+  if (!isCss(textEditor.document)) {
     return;
   }
 
   const config = getConfig();
-  const cleanCSS = new CleanCSS(config);
+  const cleanCss = new CleanCss(config);
   const text = textEditor.document.getText();
-  const {styles} = await cleanCSS.minify(text);
+  const {styles} = await cleanCss.minify(text);
   await setText(styles, textEditor);
 }
 
 async function minifyTextDocument(textEditor: TextEditor) {
-  if (!isCSS(textEditor.document)) {
+  if (!isCss(textEditor.document)) {
     return;
   }
 
   const config = getConfig();
   delete config.format;
-  const cleanCSS = new CleanCSS(config);
+  const cleanCss = new CleanCss(config);
   const text = textEditor.document.getText();
-  const {styles} = await cleanCSS.minify(text);
+  const {styles} = await cleanCss.minify(text);
   await setText(styles, textEditor);
 }
 
