@@ -17,7 +17,7 @@ function getConfig(): CleanCss.OptionsPromise {
     compatibility,
     level,
     format,
-    inline: [inline],
+    inline: inline ? [inline] : [],
     returnPromise: true,
   };
 
