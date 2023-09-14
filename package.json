@@ -109,13 +109,13 @@
     "vscode-set-text": "^1.0.0"
   },
   "devDependencies": {
-    "@types/clean-css": "^4.2.6",
-    "@types/vscode": "^1.77.0",
-    "typescript": "^5.0.4",
-    "xo": "^0.54.1"
+    "@types/clean-css": "^4.2.7",
+    "@types/vscode": "^1.82.0",
+    "typescript": "^5.2.2",
+    "xo": "^0.56.0"
   },
   "engines": {
-    "vscode": "^1.77.0"
+    "vscode": "^1.82.0"
   },
   "icon": "img/icon.png"
 }
