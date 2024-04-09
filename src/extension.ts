@@ -1,5 +1,11 @@
-import {workspace, window, commands} from 'vscode';
-import type {ExtensionContext, TextDocument, TextEditor} from 'vscode';
+import {
+  workspace,
+  window,
+  commands,
+  type ExtensionContext,
+  type TextDocument,
+  type TextEditor,
+} from 'vscode';
 import setText from 'vscode-set-text';
 import CleanCss from 'clean-css';
 
