@@ -1,7 +1,7 @@
 {
   "name": "clean-css",
   "displayName": "clean-css",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "Fully featured clean-css plugin for Visual Studio Code",
   "categories": [
